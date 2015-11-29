@@ -40,7 +40,7 @@ function connection_setup() {
 
 function print_page($page) {
   include("pages/setup_header.html");
-  include($page);
+  include("pages/{$page}");
   include("pages/setup_footer.html");
 }
 
