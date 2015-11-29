@@ -7,7 +7,7 @@ $page = array_key_exists('page', $_GET) ? $_GET['page'] : '1';
 $error = FALSE;
 $error_message = "";
 
-switch($_GET['page']) {
+switch($page) {
   case '1':
     directory_setup();
   case '2':
