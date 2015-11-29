@@ -17,22 +17,22 @@ if(!array_key_exists('submit', $_POST)) {
         <label for="db_driver">Type</label>:<br />
         <select name="db_driver">
           <option value="mysql" selected>MySQL</option>
-        </select>
+        </select><br />
         
         <label for="db_host">Address</label>:<br />
-        <input type="text" name="db_host" />
+        <input type="text" name="db_host" /><br />
         
         <label for="db_database">Database</label>:<br />
-        <input type="text" name="db_database" />
+        <input type="text" name="db_database" /><br />
       </fieldset>
       
       <fieldset>
         <legend>Database Credentials</legend>
         <label for="db_username">Username</label>:<br />
-        <input type="text" name="db_username" />
+        <input type="text" name="db_username" /><br />
         
         <label for="db_password">Password</label>:<br />
-        <input type="password" name="db_password" />
+        <input type="password" name="db_password" /><br />
         
       </fieldset>
       
