@@ -45,6 +45,6 @@ if(!array_key_exists('submit', $_POST)) {
   exit();
 }
 
-$config_file = "<?php\n$db_driver={$_POST['db_driver']};\n$db_host={$_POST['db_host']};\n$db_database={$_POST['db_database']};\n$db_username={$_POST['db_username']};\n$db_password={$_POST['db_password']};\n?>\n";
+$config_file = "<?php\n\$db_driver={$_POST['db_driver']};\n\$db_host={$_POST['db_host']};\n\$db_database={$_POST['db_database']};\n\$db_username={$_POST['db_username']};\n\$db_password={$_POST['db_password']};\n?>\n";
 file_put_contents('config/db.inc.php', $config_file);
 ?>
