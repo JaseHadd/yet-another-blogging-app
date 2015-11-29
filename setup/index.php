@@ -4,7 +4,7 @@ namespace YABA\Setup;
 
 // use the first page if not specified
 $page = array_key_exists('page', $_GET) ? $_GET['page'] : '1';
-$error = FALSE
+$error = FALSE;
 $error_message = "";
 
 switch($_GET['page']) {
@@ -15,7 +15,7 @@ switch($_GET['page']) {
 }
 
 function directory_setup() {
-  if(!(file_exists("config") || mkdir("config", $mode 0700))) {
+  if(!(file_exists("config") || mkdir("config", $mode = 0700))) {
     set_error("Unable to create config directory");
   }
   else if(!is_dir("config")) {
@@ -45,7 +45,7 @@ function print_page($page) {
 }
 
 function set_error($message) {
-  $error = TRUE
-  $error_message = $message
+  $error = TRUE;
+  $error_message = $message;
 }
 ?>
