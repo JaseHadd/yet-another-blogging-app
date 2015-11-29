@@ -1,5 +1,5 @@
 <?php
-if(!file_exists("config/") {
+if(!file_exists("config/")) {
   mkdir("config", $mode = 0700) or die("Unable to create config directory, please check permissions");
 }
 
