@@ -3,6 +3,7 @@
 if(!file_exists("config/")) {
   mkdir("config", $mode = 0700) or die("Unable to create config directory, please check permissions");
 }
+if(!is_writable("config/")) { die("Unable to write to config directory, please check permissions"); }
 
 if(!array_key_exists('submit', $_POST)) {
 ?>
