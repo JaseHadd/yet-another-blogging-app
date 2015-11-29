@@ -37,7 +37,7 @@ if(!array_key_exists('submit', $_POST)) {
         
       </fieldset>
       
-      <input type="submit" value="submit" />
+      <input type="submit" name="submit" />
     </form>
   </body>
 </html>
