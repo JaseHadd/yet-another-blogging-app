@@ -10,8 +10,10 @@ $error_message = "";
 switch($page) {
   case '1':
     directory_setup();
+    break;
   case '2':
     connection_setup();
+    break;
 }
 
 function directory_setup() {
