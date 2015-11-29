@@ -1,4 +1,5 @@
 <?php
+/* TODO: allow user to create database in setup script */
 if(!file_exists("config/")) {
   mkdir("config", $mode = 0700) or die("Unable to create config directory, please check permissions");
 }
