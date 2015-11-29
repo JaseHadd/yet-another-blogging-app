@@ -1,18 +1,4 @@
-<?php
-/* TODO: allow user to create database in setup script */
-if(!file_exists("config/")) {
-  mkdir("config", $mode = 0700) or die("Unable to create config directory, please check permissions");
-}
-if(!is_writable("config/")) { die("Unable to write to config directory, please check permissions"); }
-
-if(!array_key_exists('submit', $_POST)) {
-?>
-<html>
-  <head>
-    <title>YABA: Setup</title>
-  </head>
-  <body>
-    <h1>Database Setup</h1>
+    <h2>Database Setup</h2>
     <form method="post" autocomplete="off">
       <fieldset>
         <legend>Database Details:</legend>
@@ -40,12 +26,3 @@ if(!array_key_exists('submit', $_POST)) {
       
       <input type="submit" name="submit" />
     </form>
-  </body>
-</html>
-<?php
-  exit();
-}
-
-$config_file = "<?php\n\$db_driver={$_POST['db_driver']};\n\$db_host={$_POST['db_host']};\n\$db_database={$_POST['db_database']};\n\$db_username={$_POST['db_username']};\n\$db_password={$_POST['db_password']};\n?>\n";
-file_put_contents('config/db.inc.php', $config_file);
-?>
