@@ -58,6 +58,28 @@ function connection_setup() {
 function table_setup() {
   if(!array_key_exists('submit', $_POST)) {
     print_page('setup_tables.html');
+    return;
+  }
+  
+  // write the database prefix to the config file
+  file_put_contents('../config/db.inc.php', "\$db_prefix={$POST['db_prefix']}\n");
+  // and create the tables!
+  $prefix = $POST['prefix'];
+  include('dbsetup.inc.php');
+  try {
+    $dsn = "{$db_driver}:host={$db_host};dbname=db_database;charset=utf8";
+    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+    $db = @new PDO($dsn, $db_username, $db_password, $options);
+    
+    foreach($mysql_queries as $query) {
+      $st = $db->prepare($query);
+      $st->execute();
+    }
+  } catch(PDOException $ex) {
+    // if the database connection throws an exception, reload the page with an error
+    set_error("There was an error inserting tables: " . $ex->getMessage());
+    print_page("setup_tables");
+    return;
   }
 }
 
