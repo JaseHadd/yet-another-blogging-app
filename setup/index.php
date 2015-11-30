@@ -41,7 +41,7 @@ function connection_setup() {
   }
   // test the database connection
   try {
-    $db_driver = $_POST['$db_driver']; $db_host = $_POST['$db_host']; $db_database = $_POST['$db_database']; $db_username = $_POST['$db_username']; $db_password = $_POST['$db_password'];
+    $db_driver = $_POST['db_driver']; $db_host = $_POST['db_host']; $db_database = $_POST['db_database']; $db_username = $_POST['db_username']; $db_password = $_POST['db_password'];
     $dsn = "{$db_driver}:host={$db_host};dbname=$db_database;charset=utf8";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
     $db = @new PDO($dsn, $db_username, $db_password, $options);
@@ -67,7 +67,7 @@ function table_setup() {
   }
   
   // write the database prefix to the config file
-  file_put_contents('../config/db.inc.php', "\$db_prefix={$POST['db_prefix']}\n");
+  file_put_contents('../config/db.inc.php', "\$db_prefix={$_POST['db_prefix']}\n");
   // and create the tables!
   $prefix = $_POST['db_prefix'];
   include('dbsetup.inc.php');
