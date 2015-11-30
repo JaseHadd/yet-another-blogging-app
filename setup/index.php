@@ -52,30 +52,40 @@ function connection_setup() {
     return;
   }
   // if the database connection succeeded, we write the configuration to file and go to the next page.
-  $config_file = "<?php\n\$db_driver={$_POST['db_driver']};\n\$db_host={$_POST['db_host']};\n\$db_database={$_POST['db_database']};\n\$db_username={$_POST['db_username']};\n\$db_password={$_POST['db_password']};\n?>\n";
-  file_put_contents('../config/db.inc.php', $config_file);
+  $db_config = new stdClass();
+  $db_config->driver = $_POST['db_driver'];
+  $db_config->host = $_POST['db_host'];
+  $db_config->database = $_POST['db_database'];
+  $db_config->username = $_POST['db_username'];
+  $db_config->password = $_POST['db_password'];
+  
+  $db_config_data = serialize($db_config);
+  file_put_contents('../config/db', $db_config_data);
   load_page('?page=3');
   
 }
 
 function table_setup() {
-  // TODO: make a function that actually returns these somewhere.
-  global $db_driver, $db_host, $db_database, $db_username, $db_password;
   if(!array_key_exists('submit3', $_POST)) {
     print_page('setup_tables.html');
     return;
   }
   
   // write the database prefix to the config file
-  file_put_contents('../config/db.inc.php', "\$db_prefix={$_POST['db_prefix']}\n", FILE_APPEND);
+  $db_config_data = file_get_contents('../config/db');
+  $db_config = unserialize($db_config_data);
+  $db_config->prefix = $_POST['db_prefix'];
+  $db_config_data = serialize($db_config);
+  file_put_contents('../config/db', $db_config_data);
+  
   // and create the tables!
   $prefix = $_POST['db_prefix'];
   include('dbsetup.inc.php');
   include('../config/db.inc.php');
   try {
-    $dsn = "{$db_driver}:host={$db_host};dbname=$db_database;charset=utf8";
+    $dsn = "{$db_config->driver}:host={$db_config->host};dbname=$db_config->database;charset=utf8";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-    $db = @new PDO($dsn, $db_username, $db_password, $options);
+    $db = @new PDO($dsn, $db_config->username, $db_config->password, $options);
     
     foreach($mysql_queries as $query) {
       $st = $db->prepare($query);
