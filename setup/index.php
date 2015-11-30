@@ -22,7 +22,7 @@ switch($page) {
 }
 
 function directory_setup() {
-  if(!(file_exists("config") || mkdir("config", $mode = 0700))) {
+  if(!file_exists("config") && !mkdir("config", $mode = 0700)) {
     set_error("Unable to create config directory");
   }
   else if(!is_dir("config")) {
