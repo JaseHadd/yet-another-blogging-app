@@ -67,7 +67,7 @@ function table_setup() {
   }
   
   // write the database prefix to the config file
-  file_put_contents('../config/db.inc.php', "\$db_prefix={$_POST['db_prefix']}\n");
+  file_put_contents('../config/db.inc.php', "\$db_prefix={$_POST['db_prefix']}\n", FILE_APPEND);
   // and create the tables!
   $prefix = $_POST['db_prefix'];
   include('dbsetup.inc.php');
