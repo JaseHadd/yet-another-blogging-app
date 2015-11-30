@@ -14,6 +14,8 @@ switch($page) {
   case '2':
     connection_setup();
     break;
+  case '3':
+    table_setup();
 }
 
 function directory_setup() {
@@ -33,11 +35,30 @@ function connection_setup() {
   // if the form was not submitted, display it and exit
   if(!array_key_exists('submit', $_POST)) {
     print_page("setup_connection.html");
-    exit();
+    return;
   }
-  
+  // test the database connection
+  try {
+    $dsn = "{$db_driver}:host={$db_host};dbname=db_database;charset=utf8";
+    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+    $db = @new PDO($dsn, $db_username, $db_password, $options);
+  } catch(PDOException $ex) {
+    // if the database connection throws an exception, reload the page with an error
+    set_error("Unable to connect to the database.");
+    print_page("setup_connection.html");
+    return;
+  }
+  // if the database connection succeeded, we write the configuration to file and go to the next page.
   $config_file = "<?php\n\$db_driver={$_POST['db_driver']};\n\$db_host={$_POST['db_host']};\n\$db_database={$_POST['db_database']};\n\$db_username={$_POST['db_username']};\n\$db_password={$_POST['db_password']};\n?>\n";
   file_put_contents('../config/db.inc.php', $config_file);
+  load_page('3');
+  
+}
+
+function table_setup() {
+  if(!array_key_exists('submit', $_POST)) {
+    print_page('setup_tables.html');
+  }
 }
 
 function print_page($page) {
@@ -49,5 +70,9 @@ function print_page($page) {
 function set_error($message) {
   $error = TRUE;
   $error_message = $message;
+}
+
+function load_page($page) {
+  header("Location: {$page}");
 }
 ?>

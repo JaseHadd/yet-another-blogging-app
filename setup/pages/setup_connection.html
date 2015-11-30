@@ -1,4 +1,9 @@
     <h2>Database Setup</h2>
+    <?php if($error): ?>
+    <p class="error">
+      <?=$error_message?>
+    </p>
+    <?php endif; ?>
     <form method="post" autocomplete="off">
       <fieldset>
         <legend>Database Details:</legend>
