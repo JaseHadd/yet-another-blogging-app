@@ -41,7 +41,8 @@ function connection_setup() {
   }
   // test the database connection
   try {
-    $dsn = "{$db_driver}:host={$db_host};dbname=db_database;charset=utf8";
+    $db_driver = $_POST['$db_driver']; $db_host = $_POST['$db_host']; $db_database = $_POST['$db_database']; $db_username = $_POST['$db_username']; $db_password = $_POST['$db_password'];
+    $dsn = "{$db_driver}:host={$db_host};dbname=$db_database;charset=utf8";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
     $db = @new PDO($dsn, $db_username, $db_password, $options);
   } catch(PDOException $ex) {
@@ -68,8 +69,9 @@ function table_setup() {
   // and create the tables!
   $prefix = $POST['prefix'];
   include('dbsetup.inc.php');
+  include('../config/db.inc.php');
   try {
-    $dsn = "{$db_driver}:host={$db_host};dbname=db_database;charset=utf8";
+    $dsn = "{$db_driver}:host={$db_host};dbname=$db_database;charset=utf8";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
     $db = @new PDO($dsn, $db_username, $db_password, $options);
     
