@@ -16,7 +16,7 @@ CREATE TABLE {$prefix}user_info (
   last_name varchar(40),
   display_name varchar(122),
   PRIMARY KEY (user_id),
-  FOREIGN KEY (login_id) REFERENCES user_login(login_id)
+  FOREIGN KEY (login_id) REFERENCES {$prefix}user_login(login_id)
 ) CHARACTER SET=utf8mb4";
 
 $category_table = "
@@ -34,8 +34,8 @@ CREATE TABLE {$prefix}posts (
   category_id int NOT NULL,
   body text NOT NULL,
   PRIMARY KEY (post_id),
-  FOREIGN KEY (author_id) REFERENCES user_info(user_id),
-  FOREIGN KEY (category_id) REFERENCES categories(category_id)
+  FOREIGN KEY (author_id) REFERENCES {$prefix}user_info(user_id),
+  FOREIGN KEY (category_id) REFERENCES {$prefix}categories(category_id)
 ) CHARACTER SET=utf8mb4";
 
 $mysql_queries = array(
