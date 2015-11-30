@@ -1,6 +1,7 @@
 <?php
 namespace YABA\Setup;
 use \PDO;
+use \stdClass;
 /* TODO: allow user to create database in setup script */
 
 // use the first page if not specified
