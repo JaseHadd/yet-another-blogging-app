@@ -59,6 +59,8 @@ function connection_setup() {
 }
 
 function table_setup() {
+  // TODO: make a function that actually returns these somewhere.
+  global $db_driver, $db_host, $db_database, $db_username, $db_password;
   if(!array_key_exists('submit3', $_POST)) {
     print_page('setup_tables.html');
     return;
@@ -67,7 +69,7 @@ function table_setup() {
   // write the database prefix to the config file
   file_put_contents('../config/db.inc.php', "\$db_prefix={$POST['db_prefix']}\n");
   // and create the tables!
-  $prefix = $POST['prefix'];
+  $prefix = $_POST['db_prefix'];
   include('dbsetup.inc.php');
   include('../config/db.inc.php');
   try {
