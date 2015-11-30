@@ -1,5 +1,6 @@
 <?php
 namespace YABA\Setup;
+use \PDO;
 /* TODO: allow user to create database in setup script */
 
 // use the first page if not specified
@@ -42,7 +43,7 @@ function connection_setup() {
   try {
     $dsn = "{$db_driver}:host={$db_host};dbname=db_database;charset=utf8";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-    $db = @new \PDO($dsn, $db_username, $db_password, $options);
+    $db = @new PDO($dsn, $db_username, $db_password, $options);
   } catch(PDOException $ex) {
     // if the database connection throws an exception, reload the page with an error
     set_error("Unable to connect to the database.");
@@ -70,7 +71,7 @@ function table_setup() {
   try {
     $dsn = "{$db_driver}:host={$db_host};dbname=db_database;charset=utf8";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-    $db = @new \PDO($dsn, $db_username, $db_password, $options);
+    $db = @new PDO($dsn, $db_username, $db_password, $options);
     
     foreach($mysql_queries as $query) {
       $st = $db->prepare($query);
