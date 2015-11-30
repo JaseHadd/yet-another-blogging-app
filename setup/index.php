@@ -16,6 +16,7 @@ switch($page) {
     break;
   case '3':
     table_setup();
+    break;
 }
 
 function directory_setup() {
@@ -33,7 +34,7 @@ function directory_setup() {
 
 function connection_setup() {
   // if the form was not submitted, display it and exit
-  if(!array_key_exists('submit', $_POST)) {
+  if(!array_key_exists('submit2', $_POST)) {
     print_page("setup_connection.html");
     return;
   }
@@ -56,7 +57,7 @@ function connection_setup() {
 }
 
 function table_setup() {
-  if(!array_key_exists('submit', $_POST)) {
+  if(!array_key_exists('submit3', $_POST)) {
     print_page('setup_tables.html');
     return;
   }
