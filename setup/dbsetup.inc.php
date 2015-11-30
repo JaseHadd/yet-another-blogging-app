@@ -22,7 +22,8 @@ CREATE TABLE {$prefix}user_info (
 $category_table = "
 CREATE TABLE {$prefix}categories(
   category_id int AUTO_INCREMENT,
-  name varchar(20)
+  name varchar(20),
+  PRIMARY KEY (category_id)
 ) CHARACTER SET=utf8mb4";
   
 $post_table = "
