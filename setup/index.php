@@ -2,44 +2,60 @@
 namespace YABA\Setup;
 use \PDO;
 use \stdClass;
+
+define("PAGE_FILE", "pages/setup_%s.html");
+define("PAGE_FUNC", "setup_%s");
+
+define("DEFAULT_PAGE", 1);
+
 /* TODO: allow user to create database in setup script */
 
 // use the first page if not specified
 $page = array_key_exists('page', $_GET) ? $_GET['page'] : '1';
 $error = FALSE;
-$error_message = "";
+$error_message = '';
 
-switch($page) {
-  case '1':
-    directory_setup();
-    break;
-  case '2':
-    connection_setup();
-    break;
-  case '3':
-    table_setup();
-    break;
+$page_names = [
+  1 =>  'directory',
+  2 =>  'connection',
+  3 =>  'table'
+];
+
+$page = (int)$_GET['page'];
+
+// if the page specified isn't defined, load the default page
+if(!array_key_exists($page, $page_names)) {
+  load_page(DEFAULT_PAGE);
+}
+
+// if the page was submitted, run the corresponding function
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+  
+  $func = sprintf(PAGE_FUNC, $page_names[$_POST['submit']]);
+  if(is_callable($func)) {
+    call_user_func($func);
+  }
+} else {
+  // if the page is being requested, instead of submitted, load the HTML form.
+  print_page($page_names[$page]);
 }
 
 function directory_setup() {
   if(!file_exists("config") && !mkdir("config", $mode = 0700)) {
-    set_error("Unable to create config directory");
+    set_error('Unable to create config directory');
   }
   else if(!is_dir("config")) {
-    set_error("File 'config' already exists and is not a directory");
+    set_error('A file named config already exists and is not a directory');
   }
   else if(!is_writable("config")) {
-    set_error("Config directory is not writable.");
+    set_error('Config directory is not writable.');
   }
-  print_page("setup_directory.html");
+  print_page('setup_directory');
 }
 
 function connection_setup() {
   // if the form was not submitted, display it and exit
-  if(!array_key_exists('submit2', $_POST)) {
-    print_page("setup_connection.html");
-    return;
-  }
+  
   // test the database connection
   try {
     $db_driver = $_POST['db_driver']; $db_host = $_POST['db_host']; $db_database = $_POST['db_database']; $db_username = $_POST['db_username']; $db_password = $_POST['db_password'];
@@ -48,8 +64,8 @@ function connection_setup() {
     $db = @new PDO($dsn, $db_username, $db_password, $options);
   } catch(PDOException $ex) {
     // if the database connection throws an exception, reload the page with an error
-    set_error("Unable to connect to the database.");
-    print_page("setup_connection.html");
+    set_error('Unable to connect to the database.');
+    print_page('setup_connection');
     return;
   }
   // if the database connection succeeded, we write the configuration to file and go to the next page.
@@ -62,16 +78,10 @@ function connection_setup() {
   
   $db_config_data = serialize($db_config);
   file_put_contents('../config/db', $db_config_data);
-  load_page('?page=3');
-  
+  load_page(3);
 }
 
 function table_setup() {
-  if(!array_key_exists('submit3', $_POST)) {
-    print_page('setup_tables.html');
-    return;
-  }
-  
   // write the database prefix to the config file
   $db_config_data = file_get_contents('../config/db');
   $db_config = unserialize($db_config_data);
@@ -94,16 +104,22 @@ function table_setup() {
     }
   } catch(PDOException $ex) {
     // if the database connection throws an exception, reload the page with an error
-    set_error("There was an error inserting tables: " . $ex->getMessage());
-    print_page("setup_tables");
+    set_error("There was an error inserting tables: {$ex->getMessage()}");
+    print_page('setup_tables');
     return;
   }
 }
 
 function print_page($page) {
-  include("pages/setup_header.html");
-  include("pages/{$page}");
-  include("pages/setup_footer.html");
+  global $error, $error_message;
+  
+  $header = sprintf(PAGE_FILE, 'header');
+  $file = sprintf(PAGE_FILE, $page);
+  $footer = sprintf(PAGE_FILE, 'footer');
+  
+  include($header);
+  include($page);
+  include($footer);
 }
 
 function set_error($message) {
@@ -112,6 +128,7 @@ function set_error($message) {
 }
 
 function load_page($page) {
-  header("Location: {$page}");
+  $path = $_SERVER['PHP_SELF'] . "?page={$page}";
+  header("Location: {$path}");
 }
 ?>
