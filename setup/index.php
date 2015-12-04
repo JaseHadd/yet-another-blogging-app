@@ -34,6 +34,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   $func = sprintf(PAGE_FUNC, $page_names[$page]);
   if(is_callable($func)) {
     call_user_func($func);
+  } else {
+    error_log("YABA Setup: Unable to call function '{$func}'");
   }
 } else {
   // if the page is being requested, instead of submitted, load the HTML form.
