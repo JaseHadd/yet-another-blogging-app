@@ -2,7 +2,7 @@
     <p<?=$error?' class="error"':''?>>
       <?=$error?$error_message:"Config directory exists and is writable"?>
     </p>
-    <form method="get">
+    <form method="post">
       <input type="hidden" name="page" value="<?=$error?'1':'2'?>" />
       <input type="submit" name="submit" value="<?=$error?'Retry':'Continue'?>" />
     </form>

@@ -19,7 +19,8 @@ $error_message = '';
 $page_names = [
   1 =>  'directory',
   2 =>  'connection',
-  3 =>  'tables'
+  3 =>  'tables',
+  4 =>  'blog'
 ];
 
 $page = (int)$_GET['page'];
@@ -62,7 +63,7 @@ function connection_setup() {
   // test the database connection
   try {
     $db_driver = $_POST['db_driver']; $db_host = $_POST['db_host']; $db_database = $_POST['db_database']; $db_username = $_POST['db_username']; $db_password = $_POST['db_password'];
-    $dsn = "{$db_driver}:host={$db_host};dbname=$db_database;charset=utf8";
+    $dsn = "{$db_driver}:host={$db_host};dbname={$db_database};charset=utf8";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
     $db = @new PDO($dsn, $db_username, $db_password, $options);
   } catch(PDOException $ex) {
@@ -92,7 +93,6 @@ function tables_setup() {
   // and create the tables!
   $prefix = $_POST['db_prefix'];
   include('dbsetup.inc.php');
-  include('../config/db.inc.php');
   try {
     $dsn = "{$db_config->driver}:host={$db_config->host};dbname=$db_config->database;charset=utf8";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
@@ -108,6 +108,8 @@ function tables_setup() {
     print_page('setup_tables');
     return;
   }
+  
+  load_page(4);
 }
 
 function blog_setup() {
