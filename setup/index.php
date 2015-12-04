@@ -118,7 +118,7 @@ function print_page($page) {
   $footer = sprintf(PAGE_FILE, 'footer');
   
   include($header);
-  include($page);
+  include($file);
   include($footer);
 }
 
