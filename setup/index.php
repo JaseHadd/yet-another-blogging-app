@@ -3,10 +3,10 @@ namespace YABA\Setup;
 use \PDO;
 use \stdClass;
 
-define("PAGE_FILE", "pages/setup_%s.html");
-define("PAGE_FUNC", "%s_setup");
+define('PAGE_FILE', 'pages/setup_%s.html');
+define('PAGE_FUNC', 'YABA\Setup\%s_setup');
 
-define("DEFAULT_PAGE", 1);
+define('DEFAULT_PAGE', 1);
 
 /* TODO: allow user to create database in setup script */
 
