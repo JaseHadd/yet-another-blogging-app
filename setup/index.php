@@ -5,6 +5,7 @@ use \stdClass;
 
 define('PAGE_FILE', 'pages/setup_%s.html');
 define('PAGE_FUNC', 'YABA\Setup\%s_setup');
+define('CONF_FILE', '../config/%s');
 
 define('DEFAULT_PAGE', 1);
 
@@ -78,18 +79,15 @@ function connection_setup() {
   $db_config->username = $_POST['db_username'];
   $db_config->password = $_POST['db_password'];
   
-  $db_config_data = serialize($db_config);
-  file_put_contents('../config/db', $db_config_data);
+  save_object('db', $db_config);
   load_page(3);
 }
 
 function tables_setup() {
   // write the database prefix to the config file
-  $db_config_data = file_get_contents('../config/db');
-  $db_config = unserialize($db_config_data);
+  $db_config = load_object('db');
   $db_config->prefix = $_POST['db_prefix'];
-  $db_config_data = serialize($db_config);
-  file_put_contents('../config/db', $db_config_data);
+  save_object('db', $db_config);
   
   // and create the tables!
   $prefix = $_POST['db_prefix'];
@@ -110,6 +108,17 @@ function tables_setup() {
     print_page('setup_tables');
     return;
   }
+}
+
+function blog_setup() {
+  $blog_config = new stdClass();
+  $blog_config -> title     = $_POST['blog_title'];
+  $blog_config -> headline  = $_POST['blog_headline'];
+  
+  save_object('blog', $blog_config);
+  
+  // TODO: update database with admin information
+  
 }
 
 function print_page($page) {
@@ -133,4 +142,17 @@ function load_page($page) {
   $path = $_SERVER['PHP_SELF'] . "?page={$page}";
   header("Location: {$path}");
 }
+
+function load_object($file) {
+  $file_path = sprintf(CONF_FILE, $file);
+  $file_data = file_get_contents($file_path);
+  return $file_data;
+}
+
+function save_object($file, $object) {
+  $file_path = sprintf(CONF_FILE, $file);
+  $file_data = serialize($object);
+  file_put_contents($file_path, $file_data);
+}
+
 ?>
