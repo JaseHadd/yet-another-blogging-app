@@ -18,7 +18,7 @@ $error_message = '';
 $page_names = [
   1 =>  'directory',
   2 =>  'connection',
-  3 =>  'table'
+  3 =>  'tables'
 ];
 
 $page = (int)$_GET['page'];
@@ -81,7 +81,7 @@ function connection_setup() {
   load_page(3);
 }
 
-function table_setup() {
+function tables_setup() {
   // write the database prefix to the config file
   $db_config_data = file_get_contents('../config/db');
   $db_config = unserialize($db_config_data);
