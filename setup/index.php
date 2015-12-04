@@ -9,7 +9,10 @@ define('CONF_FILE', '../config/%s');
 
 define('DEFAULT_PAGE', 1);
 
-/* TODO: allow user to create database in setup script */
+/* TODO:  allow user to create database in setup script
+          add error handling for database inserts
+          perform input validation
+          */
 
 // use the first page if not specified
 $page = array_key_exists('page', $_GET) ? $_GET['page'] : '1';
@@ -20,7 +23,8 @@ $page_names = [
   1 =>  'directory',
   2 =>  'connection',
   3 =>  'tables',
-  4 =>  'blog'
+  4 =>  'blog',
+  5 =>  'admin'
 ];
 
 $page = (int)$_GET['page'];
@@ -102,6 +106,7 @@ function tables_setup() {
       $st = $db->prepare($query);
       $st->execute();
     }
+    
   } catch(PDOException $ex) {
     // if the database connection throws an exception, reload the page with an error
     set_error("There was an error inserting tables: {$ex->getMessage()}");
@@ -118,8 +123,39 @@ function blog_setup() {
   $blog_config -> headline  = $_POST['blog_headline'];
   
   save_object('blog', $blog_config);
+}
+
+function admin_setup() {
+  $db_config = load_object('db');
   
-  // TODO: update database with admin information
+  $user_login_query = '
+  INSERT INTO {$db->prefix}user_login(email_address, password) 
+    VALUES(:email, :hash)';
+  $user_info_query = '
+  INSERT INTO {%db->prefix}user_info(login_id, first_name, last_name, display_name)
+    VALUES(:login_id, first_name, last_name, display_name)';
+  $dsn = "{$db_config->driver}:host={$db_config->host};dbname=$db_config->database;charset=utf8";
+  $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+  $db = @new PDO($dsn, $db_config->username, $db_config->password, $options);
+  
+  $cost = 10;
+  $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_RANDOM)));
+  $salt = sprintf('$2y$%02d$', $cost) . $salt;
+  $hash = crypt($_POST['admin_password'], $salt);
+  
+  $statement = $db->prepare($user_login_query);
+  $statement->execute(array(
+    'email' => $_POST['admin_email'],
+    'password' => $hash));
+  
+  $statement = $db->prepare($user_info_query);
+  $statement->execute(array(
+    'login_id' => $db->lastInsertId(),
+    'first_name' => $_POST['first_name'],
+    'last_name' => $_POST['last_name'],
+    'display_name' => $_POST['display_name']));
+    
+  load_index();
   
 }
 
@@ -143,6 +179,10 @@ function set_error($message) {
 function load_page($page) {
   $path = $_SERVER['PHP_SELF'] . "?page={$page}";
   header("Location: {$path}");
+}
+
+function load_index() {
+  header("Location: {dirname(dirname(__FILE__))}");
 }
 
 function load_object($file) {

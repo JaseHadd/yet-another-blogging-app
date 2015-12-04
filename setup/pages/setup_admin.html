@@ -1,0 +1,24 @@
+    <h2>Admin Setup</h2>
+    <?php if($error): ?>
+    <p class="error">
+      <?=$error_message?>
+    </p>
+    <?php endif; ?>
+    <form method="post">
+      <label for="admin_email">Email Address</label>:<br />
+      <input type="text" name="admin_email" /><br />
+    
+      <label for="admin_password">Password</label>:<br />
+      <input type="password" name="admin_password" /><br />
+      <label for="admin_password_confirm">Confirm Password</label>:<br />
+      <input type="password" name="admin_password_confirm" /><br />
+      
+      <label for="admin_first_name">First Name</label>:<br />
+      <input type="text" name="admin_first_name" /><br />
+      <label for="admin_last_name">Last Name</label>:<br />
+      <input type="text" name="admin_last_name" /><br />
+      <label for="admin_display_name">Display name</label>:<br />
+      <input type="text" name="admin_display_name" /><br />
+      
+      <input type="submit" name="submit" />
+    </form>
