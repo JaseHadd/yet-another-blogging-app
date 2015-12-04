@@ -31,7 +31,7 @@ if(!array_key_exists($page, $page_names)) {
 // if the page was submitted, run the corresponding function
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
   
-  $func = sprintf(PAGE_FUNC, $page_names[$_POST['submit']]);
+  $func = sprintf(PAGE_FUNC, $page_names[$page]);
   if(is_callable($func)) {
     call_user_func($func);
   }
