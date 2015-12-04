@@ -4,7 +4,7 @@ use \PDO;
 use \stdClass;
 
 define("PAGE_FILE", "pages/setup_%s.html");
-define("PAGE_FUNC", "setup_%s");
+define("PAGE_FUNC", "%s_setup");
 
 define("DEFAULT_PAGE", 1);
 
