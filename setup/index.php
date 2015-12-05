@@ -31,6 +31,7 @@ $page = (int)$_GET['page'];
 
 // if the page specified isn't defined, load the default page
 if(!array_key_exists($page, $page_names)) {
+  error_log("{$page} doesn't exist in {var_dump($page_names)})");
   load_page(DEFAULT_PAGE);
 }
 
