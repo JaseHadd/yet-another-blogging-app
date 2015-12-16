@@ -8,6 +8,8 @@ $error = false;
 $error_msg = "";
 
 if(array_key_exists('logout', $_GET)) {
+  session_start();
+  session_unset();
   session_destroy();
 }
 
