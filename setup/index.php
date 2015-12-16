@@ -139,7 +139,7 @@ function admin_setup() {
   $db = @new PDO($dsn, $db_config->username, $db_config->password, $options);
   
   $cost = 10;
-  $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_RANDOM)));
+  $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_RANDOM)), '+', '-');
   $salt = sprintf('$2y$%02d$', $cost) . $salt;
   $hash = crypt($_POST['admin_password'], $salt);
   
