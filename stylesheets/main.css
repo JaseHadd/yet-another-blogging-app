@@ -61,6 +61,7 @@ h2 {
 
 #footer p {
   margin: 0;
+  text-align: center;
 }
 
 #header > h1, #header > p {
