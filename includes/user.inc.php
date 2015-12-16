@@ -6,7 +6,7 @@ require_once('includes/pdo.inc.php');
 require_once('includes/files.inc.php');
 
 function logged_in() {
-  return isset($_SESSION['user_id']);
+  return isset($_SESSION['login_id']);
 }
 
 function login($email_address, $password) {
