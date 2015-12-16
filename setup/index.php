@@ -182,7 +182,8 @@ function load_page($page) {
 }
 
 function load_index() {
-  header("Location: {dirname(dirname(__FILE__))}");
+  $index = dirname(dirname(__FILE__));
+  header("Location: {$index}");
 }
 
 function load_object($file) {
