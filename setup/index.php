@@ -132,8 +132,8 @@ function admin_setup() {
   INSERT INTO {$db->prefix}user_login(email_address, password) 
     VALUES(:email, :hash)';
   $user_info_query = '
-  INSERT INTO {%db->prefix}user_info(login_id, first_name, last_name, display_name)
-    VALUES(:login_id, first_name, last_name, display_name)';
+  INSERT INTO {$db->prefix}user_info(login_id, first_name, last_name, display_name)
+    VALUES(:login_id, :first_name, :last_name, :display_name)';
   $dsn = "{$db_config->driver}:host={$db_config->host};dbname=$db_config->database;charset=utf8";
   $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
   $db = @new PDO($dsn, $db_config->username, $db_config->password, $options);
@@ -188,7 +188,7 @@ function load_index() {
 function load_object($file) {
   $file_path = sprintf(CONF_FILE, $file);
   $file_data = file_get_contents($file_path);
-  return $file_data;
+  return unserialize($file_data);
 }
 
 function save_object($file, $object) {
