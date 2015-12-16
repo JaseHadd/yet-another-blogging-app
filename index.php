@@ -11,6 +11,6 @@ require_once('includes/user.inc.php');
 
 $config = load_object('blog');
 
-load_page('main', ['config' => $config]);
+load_page('main');
 
 ?>
