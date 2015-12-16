@@ -1,7 +1,7 @@
       <div id="sidebar">
         <?php if(YABA\logged_in()): ?>
         <p>
-          Logged in as <?=$user->name?>. <a href="login.php?logout">Logout</a>.
+          Logged in as <?=$vars['user']['display_name']?>. <a href="login.php?logout">Logout</a>.
         </p>
         <?php else: ?>
         <p>

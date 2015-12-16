@@ -19,6 +19,7 @@ function save_object($file, $data) {
 function load_page($file_name, $vars = []) {
   $pages = ['header', 'nav', $file_name, 'sidebar', 'footer'];
   $vars['config'] = load_object('blog');
+  $vars['user'] = $_SESSION;
   foreach($pages as $page) {
     $file_path = sprintf(PAGE_PATH, $page);
     require($file_path);
