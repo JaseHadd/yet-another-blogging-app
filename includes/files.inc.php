@@ -1,7 +1,7 @@
 <?php
 namespace YABA;
 
-define(OBJECT_PATH, 'config/%s');
+define('OBJECT_PATH', 'config/%s');
 
 function load_object($file) {
   $file_path = sprintf(OBJECT_PATH, $file);
