@@ -11,10 +11,6 @@ require_once('includes/user.inc.php');
 
 $config = load_object('blog');
 
-require('pages/header.html');
-require('pages/nav.html');
-require('pages/main.html');
-require('pages/sidebar.html');
-require('pages/footer.html');
+load_page('main');
 
 ?>
