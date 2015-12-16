@@ -8,8 +8,9 @@ $error = false;
 $error_msg = "";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if(login($_POST['email_address'], $_POST['password'])) {
-    $_SESSION = get_session_array();
+  $result = login($_POST['email_address'], $_POST['password']);
+  if($result) {
+    $_SESSION = get_session_array($result);
     header('Location: index.php');
   }
   else {
