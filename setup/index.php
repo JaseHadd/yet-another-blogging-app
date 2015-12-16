@@ -129,10 +129,10 @@ function admin_setup() {
   $db_config = load_object('db');
   
   $user_login_query = "
-  INSERT INTO {$db->prefix}user_login(email_address, password) 
+  INSERT INTO {$db_config->prefix}user_login(email_address, password) 
     VALUES(:email, :hash)";
   $user_info_query = "
-  INSERT INTO {$db->prefix}user_info(login_id, first_name, last_name, display_name)
+  INSERT INTO {$db_config->prefix}user_info(login_id, first_name, last_name, display_name)
     VALUES(:login_id, :first_name, :last_name, :display_name)";
   $dsn = "{$db_config->driver}:host={$db_config->host};dbname=$db_config->database;charset=utf8";
   $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
