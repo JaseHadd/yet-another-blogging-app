@@ -1,6 +1,9 @@
 <?php
-if(!file_exists("config/")) {
+namespace YABA;
+
+if(!file_exists('config/')) {
   header("Location: setup/index.php?page=1");
 }
-include("db.inc.php");
+
+require_once('db.inc.php');
 ?>
