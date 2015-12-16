@@ -7,6 +7,10 @@ require_once('includes/files.inc.php');
 $error = false;
 $error_msg = "";
 
+if(array_key_exists('logout', $_GET)) {
+  session_destroy();
+}
+
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
   $result = login($_POST['email_address'], $_POST['password']);
   if($result) {
