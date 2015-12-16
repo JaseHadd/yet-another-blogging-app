@@ -6,7 +6,7 @@ define('OBJECT_PATH', 'config/%s');
 function load_object($file) {
   $file_path = sprintf(OBJECT_PATH, $file);
   $file_contents = file_get_contents($file_path);
-  return unserialize(file_contents);
+  return unserialize($file_contents);
 }
 
 function save_object($file, $data) {
