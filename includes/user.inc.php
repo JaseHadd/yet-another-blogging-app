@@ -11,7 +11,7 @@ function logged_in() {
 function login($email_address, $password) {
   $config = load_object('db');
   $link = database_connect();
-  $query = "SELECT login_id, password FROM {$db->prefix}user_login WHERE email_address = :email LIMIT 1";
+  $query = "SELECT login_id, password FROM {$config->prefix}user_login WHERE email_address = :email LIMIT 1";
   $statement = $link->prepare($query);
   $statement->bindParam('email', $email_address);
   $statement->execute();
