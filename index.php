@@ -7,6 +7,7 @@ if(!file_exists('config/')) {
 
 require_once('includes/pdo.inc.php');
 require_once('includes/files.inc.php');
+require_once('includes/user.inc.php');
 
 $config = load_object('blog');
 
