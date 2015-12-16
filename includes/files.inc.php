@@ -16,7 +16,7 @@ function save_object($file, $data) {
   file_put_contents($file_path, $file_contents);
 }
 
-function load_page($file_name) {
+function load_page($file_name, $vars = []) {
   $pages = ['header', 'nav', $file_name, 'sidebar', 'footer'];
   foreach($pages as $page) {
     $file_path = sprintf(PAGE_PATH, $page);

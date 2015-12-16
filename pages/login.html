@@ -5,9 +5,9 @@
           <label for="password">Password</label>
           <input type="password" id="password" placeholder="password123"><br>
         </form>
-        <?php if($error): ?>
+        <?php if($vars['error']): ?>
         <p class="error">
-          <?=$error_msg?>
+          <?=$vars['error_msg']?>
         </p>
         <?php endif; ?>
       </div>

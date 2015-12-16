@@ -13,8 +13,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   else {
     $error = true;
     $error_msg = "Invalid username and/or password";
-    load_page('login');
   }
-} else {
-  load_page('login');
 }
+load_page('login', ['error' => $error, '$error_msg' => $error_msg]);
