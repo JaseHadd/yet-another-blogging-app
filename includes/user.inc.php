@@ -28,7 +28,7 @@ function get_session_array($login_id) {
   $session = ['login_id' => $login_id];
   $config = load_object('db');
   $link = database_connect();
-  $query = "SELECT first_name, last_name, display_name FROM {$db->prefix}user_info WHERE login_id = :login_id LIMIT 1";
+  $query = "SELECT first_name, last_name, display_name FROM {$config->prefix}user_info WHERE login_id = :login_id LIMIT 1";
   $statement = $link->prepare($query);
   $statement->bindParam('login_id', $login_id);
   $statement->execute();
