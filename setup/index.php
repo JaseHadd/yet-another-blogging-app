@@ -151,9 +151,9 @@ function admin_setup() {
   $statement = $db->prepare($user_info_query);
   $statement->execute(array(
     'login_id' => $db->lastInsertId(),
-    'first_name' => $_POST['first_name'],
-    'last_name' => $_POST['last_name'],
-    'display_name' => $_POST['display_name']));
+    'first_name' => $_POST['admin_first_name'],
+    'last_name' => $_POST['admin_last_name'],
+    'display_name' => $_POST['admin_display_name']));
     
   load_index();
   
