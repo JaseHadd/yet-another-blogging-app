@@ -1,5 +1,6 @@
 <?php
 namespace YABA;
+use \PDO;
 
 require_once('includes/pdo.inc.php');
 require_once('includes/files.inc.php');
