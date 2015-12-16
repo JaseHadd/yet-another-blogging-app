@@ -45,7 +45,7 @@ body, html {
   list-style: none;
 }
 
-#nav il {
+#nav li {
   margin: 0;
   padding: 0;
   display: inline;
@@ -61,4 +61,8 @@ h2 {
 
 #footer p {
   margin: 0;
+}
+
+#header > h1, #header > h2 {
+  display: inline;
 }
