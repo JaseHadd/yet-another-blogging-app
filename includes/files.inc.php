@@ -17,7 +17,10 @@ function save_object($file, $data) {
 }
 
 function load_page($file_name, $vars = []) {
-  session_start();
+  if(!isset($_SESSION)) {
+    session_start();
+    session_write_close();
+  }
   $pages = ['header', 'nav', $file_name, 'sidebar', 'footer'];
   $vars['config'] = load_object('blog');
   $vars['user'] = $_SESSION;
