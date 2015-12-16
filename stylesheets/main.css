@@ -1,0 +1,64 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  background: #a7a090;
+}
+
+#page {
+  width: 750px;
+  margin: 0 auto;
+  background: #99c;
+}
+
+#header {
+  padding: 5px 10px;
+  background: #ddd;
+}
+
+#nav {
+  background: #c99;
+}
+
+#main {
+  float: left;
+  width: 480px;
+  padding: 10px;
+  background: #9c9;
+}
+
+#sidebar {
+  float: right;
+  width: 230px;
+  padding: 10px;
+  background: #99c;
+}
+
+#footer {
+  clear: both;
+  background: #cc9;
+}
+
+#nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#nav il {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0 0 1em;
+}
+
+#footer p {
+  margin: 0;
+}
