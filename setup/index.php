@@ -146,7 +146,7 @@ function admin_setup() {
   $statement = $db->prepare($user_login_query);
   $statement->execute(array(
     'email' => $_POST['admin_email'],
-    'password' => $hash));
+    'hash' => $hash));
   
   $statement = $db->prepare($user_info_query);
   $statement->execute(array(
