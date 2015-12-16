@@ -14,8 +14,12 @@ if(array_key_exists('logout', $_GET)) {
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
   $result = login($_POST['email_address'], $_POST['password']);
   if($result) {
-    session_start();
+    if(!isset($_SESSION)) {
+      session_start();
+      session_write_close();
+    }
     $_SESSION = get_session_array($result);
+    session_write_close();
     header('Location: index.php');
   }
   else {
