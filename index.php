@@ -8,7 +8,7 @@ if(!file_exists('config/')) {
 require_once('includes/pdo.inc.php');
 require_once('includes/files.inc.php');
 
-$config = load_file('blog');
+$config = load_object('blog');
 
 require('pages/header.html');
 require('pages/main.html');

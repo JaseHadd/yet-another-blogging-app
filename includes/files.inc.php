@@ -1,4 +1,6 @@
 <?php
+namespace YABA;
+
 define(OBJECT_PATH, '../config/%s');
 
 function load_object($file) {
