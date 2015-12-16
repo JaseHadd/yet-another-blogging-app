@@ -17,4 +17,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $error_msg = "Invalid username and/or password";
   }
 }
-load_page('login', ['error' => $error, '$error_msg' => $error_msg]);
+$page_vars = ['config' => load_object('blog'), 'error' => $error, '$error_msg' => $error_msg];
+load_page('login', $page_vars);
