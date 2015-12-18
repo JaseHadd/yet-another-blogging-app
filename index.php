@@ -11,6 +11,7 @@ require_once('includes/pdo.inc.php');
 require_once('includes/files.inc.php');
 require_once('includes/user.inc.php');
 require_once('includes/posts.inc.php');
+require_once('includes/parsedown/Parsedown.php');
 
 $config = load_object('blog');
 
@@ -20,6 +21,6 @@ if(array_key_exists('page', $_GET)) {
   $page = $_GET['page'];
 }
 
-load_page('main', ['page' => $page]);
+load_page('main', ['page' => $page, 'parser' => new Parsedown()]);
 
 ?>
