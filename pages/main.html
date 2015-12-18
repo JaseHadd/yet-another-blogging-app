@@ -1,7 +1,7 @@
       <div id="main">
         <?php foreach(YABA\get_posts(POSTS_PER_PAGE, POSTS_PER_PAGE * ($vars['page'] - 1)) as $post): ?>
         <div class="post">
-          <div class="title"><?=$post->title?></div>
+          <div class="title"><h2><?=$post->title?></h2></div>
           <div class="body"><?=$post->body?></div>
         </div>
         <?php endforeach; ?>
