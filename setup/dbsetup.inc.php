@@ -29,6 +29,7 @@ CREATE TABLE {$prefix}categories(
 $post_table = "
 CREATE TABLE {$prefix}posts (
   post_id int AUTO_INCREMENT,
+  title varchar(255) NOT NULL,
   created_time datetime NOT NULL,
   modified_time datetime NOT NULL,
   author_id int NOT NULL,
