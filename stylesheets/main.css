@@ -79,8 +79,16 @@ form > label {
   text-align: right;
 }
 
-/* post styling */
+/* title styling */
+#header > h1 {
+  font-size: 1.45em;
+}
 
+#header > p {
+  font-size: 0.95em;
+}
+
+/* post styling */
 .post > .body > h1 {
   font-size: 1.7em;
 }
