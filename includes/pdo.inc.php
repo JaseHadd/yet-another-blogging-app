@@ -2,7 +2,7 @@
 namespace YABA;
 use \PDO;
 
-include_once('files.inc.php');
+require_once('includes/includes.inc.php');
 
 function database_connect() {
   $db = load_object('db');

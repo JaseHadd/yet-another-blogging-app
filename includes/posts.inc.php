@@ -2,8 +2,7 @@
 namespace YABA;
 use \PDO;
 
-require_once('includes/pdo.inc.php');
-require_once('includes/files.inc.php');
+require_once('includes/includes.inc.php');
 
 function get_posts($number, $from) {
   $config = load_object('db');

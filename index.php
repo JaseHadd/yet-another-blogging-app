@@ -3,15 +3,11 @@ namespace YABA;
 
 define('POSTS_PER_PAGE', 5);
 
+require_once('includes/includes.inc.php');
+
 if(!file_exists('config/')) {
   header('Location: setup/index.php?page=1');
 }
-
-require_once('includes/pdo.inc.php');
-require_once('includes/files.inc.php');
-require_once('includes/user.inc.php');
-require_once('includes/posts.inc.php');
-require_once('includes/parsedown/Parsedown.php');
 
 $config = load_object('blog');
 

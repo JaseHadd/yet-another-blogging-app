@@ -1,8 +1,7 @@
 <?php
 namespace YABA;
 
-require_once('includes/user.inc.php');
-require_once('includes/files.inc.php');
+require_once('includes/includes.inc.php');
 
 $error = false;
 $error_msg = "";
