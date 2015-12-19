@@ -1,4 +1,8 @@
 /* layout alignment */
+* {
+  box-sizing: border-box;
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -20,20 +24,14 @@ body, html {
 #nav {
   background: #c99;
   text-align: center;
+  overflow: hidden;
 }
 
 #main {
   float: left;
-  width: 480px;
+  width: 100%;
   padding: 10px;
   background: #9c9;
-}
-
-#sidebar {
-  float: right;
-  width: 230px;
-  padding: 10px;
-  background: #99c;
 }
 
 #footer {
@@ -41,18 +39,28 @@ body, html {
   background: #cc9;
 }
 
-/* make lists horizontal in the nav bar */
-#nav ul {
-  margin: 0;
+/* nav bar styling */
+/* page navigation on the left */
+#nav > ul {
+  margin: 4px;
   padding: 0;
+  float: left;
   list-style: none;
 }
 
-#nav li {
-  margin: 0;
+#nav > ul > li {
+  margin: 5px;
   padding: 0;
   display: inline;
 }
+
+/* user controls on the right */
+#nav > span {
+  margin: 4px 9px 4px 0px;
+  display: inline-block;
+}
+
+/* header styles */
 
 h1 {
   margin: 0;

@@ -21,7 +21,7 @@ function load_page($file_name, $vars = []) {
     session_start();
     session_write_close();
   }
-  $pages = ['header', 'nav', $file_name, 'sidebar', 'footer'];
+  $pages = ['header', 'nav', $file_name, 'footer'];
   $vars['config'] = load_object('blog');
   $vars['user'] = $_SESSION;
   foreach($pages as $page) {

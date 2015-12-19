@@ -1,1 +1,16 @@
-      <div id="nav">navbar lorem ipsum</div>
+      <div id="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+        
+        <span>
+          <?php if(YABA\logged_in()): ?>
+            Hello <?=$vars['user']['display_name']?>
+            (<a href="admin.php">Admin | <a href="login.php?logout">Logout</a>)
+            
+          <?php else: ?>
+            Hello Guest (<a href="login.php">Login</a>).
+            
+          <?php endif; ?>
+        </span>
+      </div>
