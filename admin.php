@@ -9,7 +9,8 @@ if(!logged_in()){
   header('Location: index.php');
   exit();
 }
-if($_SERVER['REQUEST_TYPE'] == "GET") {
+
+if($_SERVER['REQUEST_METHOD'] == "GET") {
   load_page('newpost');
 } else {
   /* post stuff here */
