@@ -3,40 +3,37 @@
   box-sizing: border-box;
 }
 
-body, html {
+body {
   margin: 0;
   padding: 0;
   color: #000;
-  background: #a7a090;
+  background: #7e93a6;
 }
 
 #page {
   max-width: 750px;
   margin: 0 auto;
-  background: #99c;
 }
 
 #header {
   padding: 5px 10px;
-  background: #ddd;
+  background: #629c86;
 }
 
 #nav {
-  background: #c99;
+  background: #706ea1;
   text-align: center;
   overflow: hidden;
 }
 
 #main {
-  float: left;
   width: 100%;
   padding: 10px;
-  background: #9c9;
+  background: #627d96;
 }
 
 #footer {
-  clear: both;
-  background: #cc9;
+  background: #629c86;
 }
 
 /* nav bar styling */
