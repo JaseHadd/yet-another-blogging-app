@@ -81,6 +81,7 @@ h2 {
 /* form alignment */
 form > label {
   display: inline-block;
+  vertical-align: top;
   width: 100px;
   text-align: right;
 }
