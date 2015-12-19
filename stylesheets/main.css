@@ -81,7 +81,7 @@ h2 {
 /* form alignment */
 form > label {
   display: inline-block;
-  width: 150px;
+  width: 100px;
   text-align: right;
 }
 
@@ -104,7 +104,10 @@ form > label {
 }
 
 /* textbox styling */
-input[type="email"], input[type="password"], input[type="text"] {
+input[type="email"],
+input[type="password"],
+input[type="text"],
+textarea {
   border: 1px solid #629c86;
   border-left-width: 4px;
   border-radius: 7px;
