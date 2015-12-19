@@ -44,8 +44,8 @@ body, html {
 #nav > ul {
   margin: 4px;
   padding: 0;
-  float: left;
   list-style: none;
+  float: left;
 }
 
 #nav > ul > li {
@@ -58,6 +58,7 @@ body, html {
 #nav > span {
   margin: 4px 9px 4px 0px;
   display: inline-block;
+  float: right;
 }
 
 /* header styles */
