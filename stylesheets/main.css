@@ -102,3 +102,12 @@ form > label {
 .post > .body > h2 {
   font-size: 1.3em;
 }
+
+/* textbox styling */
+input[type="email"], input[type="password"], input[type="text"] {
+  border: 1px solid #629c86;
+  border-left-width: 4px;
+  border-radius: 7px;
+  padding-left: 4px;
+  margin: 2px;
+}
