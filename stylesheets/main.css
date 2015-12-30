@@ -36,7 +36,6 @@ h1, h2, h3, h4, h5, h6 {
   background: #f9f9f9;
   text-align: center;
   overflow: hidden;
-  color: rgb(249, 249, 249);
   padding: 10px;
 }
 
@@ -75,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #nav a {
-  color: #ccc;
+  color: #333;
 }
 
 /* header styles */
