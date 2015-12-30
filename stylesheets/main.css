@@ -34,7 +34,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #nav {
   background: #f9f9f9;
-  text-align: center;
   overflow: hidden;
   padding: 10px;
 }
@@ -57,7 +56,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 4px;
   padding: 0;
   list-style: none;
-  float: left;
 }
 
 #nav > ul > li {
@@ -67,10 +65,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* user controls on the right */
-#nav > span {
-  margin: 4px 9px 4px 0px;
-  display: inline-block;
-  float: right;
+#nav > p {
+  margin: 4px 9px;
 }
 
 #nav a {
