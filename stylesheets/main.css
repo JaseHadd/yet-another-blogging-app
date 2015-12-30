@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
 /* layout alignment */
 * {
   box-sizing: border-box;
@@ -8,6 +10,10 @@ body {
   padding: 0;
   color: #000;
   background: #7e93a6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato", sans-serif;
 }
 
 #page {
