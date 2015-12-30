@@ -1,15 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(https://fonts.googleapis.com/css?family=Cardo:400,400italic,700);
 
 /* layout alignment */
 * {
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
-  color: #000;
+  color: #333;
+  font-family: "Cardo", serif;
+  font-size: 15pt;
   background: #7e93a6;
+	
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,16 +32,24 @@ h1, h2, h3, h4, h5, h6 {
   background: #629c86;
 }
 
+
 #nav {
   background: #706ea1;
   text-align: center;
   overflow: hidden;
 }
 
+#main h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 15px;
+}
+
+#main p {
+  margin-bottom: 10px;
+}
 #main {
   width: 100%;
   padding: 10px;
-  background: #627d96;
+  background: #f9f9f9;
 }
 
 #footer {
@@ -66,21 +80,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* header styles */
 
-h1 {
-  margin: 0;
-}
-
-h2 {
-  margin: 0 0 1em;
-}
-
 #footer p {
   margin: 0;
   text-align: center;
 }
 
 #header > h1, #header > p {
-  display: inline;
+  text-align: center;
   vertical-align: middle;
 }
 
@@ -99,6 +105,7 @@ form > label {
 
 #header > p {
   font-size: 0.95em;
+  font-style: italic;
 }
 
 /* post styling */
