@@ -1,8 +1,8 @@
 @media screen and (min-width: 768px) {
-  #nav p {
+  #nav > p {
     float: right;
   }
-  #nav ul {
+  #nav > ul {
     float: left;
   }
 }
