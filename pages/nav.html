@@ -3,7 +3,7 @@
           <li><a href="/">Home</a></li>
         </ul>
         
-        <span>
+        <p>
           <?php if(YABA\logged_in()): ?>
             Hello <?=$vars['user']['display_name']?>
             (<a href="admin.php">Admin</a> | <a href="login.php?logout">Logout</a>)
@@ -12,5 +12,5 @@
             Hello Guest (<a href="login.php">Login</a>)
             
           <?php endif; ?>
-        </span>
+        </p>
       </div>
