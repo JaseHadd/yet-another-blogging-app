@@ -27,20 +27,23 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-#header {
+#header, #footer {
   padding: 5px 10px;
-  background: #629c86;
+  background: #f9f9f9;
 }
 
 
 #nav {
-  background: #706ea1;
+  background: rgb(46, 8, 84);
   text-align: center;
   overflow: hidden;
+  color: rgb(249, 249, 249);
+  padding: 10px;
 }
 
 #main h1, h2, h3, h4, h5, h6 {
   margin-bottom: 15px;
+  padding: 30px 0px;
 }
 
 #main p {
@@ -50,10 +53,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   padding: 10px;
   background: #f9f9f9;
-}
-
-#footer {
-  background: #629c86;
 }
 
 /* nav bar styling */
