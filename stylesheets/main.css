@@ -33,10 +33,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
 #nav {
-  background: rgb(46, 8, 84);
+  background: #f9f9f9;
   text-align: center;
   overflow: hidden;
-  color: #f9f9f9;
+  color: rgb(249, 249, 249);
   padding: 10px;
 }
 
@@ -50,7 +50,6 @@ h1, h2, h3, h4, h5, h6 {
 #main {
   width: 100%;
   padding: 30px;
-  background: #f9f9f9;
 }
 
 /* nav bar styling */
