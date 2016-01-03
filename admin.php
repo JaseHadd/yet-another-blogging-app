@@ -24,6 +24,9 @@ function newpost() {
   $title = $_POST['post_title'];
   $text = $_POST['post_text'];
   $category = $_POST['post_category'];
+  $author = $_SESSION['user_id'];
+  
+  add_post($title, $text, $category, $author);
 }
 
 ?>
