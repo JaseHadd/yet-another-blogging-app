@@ -58,7 +58,7 @@ function directory_setup() {
   else if(!is_writable("config")) {
     set_error('Config directory is not writable.');
   }
-  print_page('directory');
+  load_page(2);
 }
 
 function connection_setup() {
