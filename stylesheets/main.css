@@ -113,6 +113,7 @@ form > label {
 input[type="email"],
 input[type="password"],
 input[type="text"],
+select,
 textarea {
   border: 1px solid #333;
   border-left-width: 4px;
