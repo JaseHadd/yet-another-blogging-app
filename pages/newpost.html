@@ -5,7 +5,8 @@
           <label for="post_category">Category</label>
           <select name="post_category">
             <?php foreach(YAVA\get_categories() as $category): ?>
-            <option value="<?=$category->category_id?>"><?=$category->name?></option>
+            <option value="<?=$category->category_id ?>"><?=$category->name ?></option>
+            <?php endforeach; ?>
           </select><br>
           <label for="post_text">Text</label>
           <textarea name="post_text"></textarea><br>
