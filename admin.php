@@ -17,7 +17,7 @@ $page = array_key_exists('page', $_GET)?$_GET['page']:'newpost';
 if($_SERVER['REQUEST_METHOD'] == "GET") {
   load_page($page);
 } else {
-  call_user_func($page);
+  call_user_func("YABA\{$page}");
 }
 
 function newpost() {
