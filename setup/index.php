@@ -58,7 +58,7 @@ function directory_setup() {
   else if(!is_writable("config")) {
     set_error('Config directory is not writable.');
   }
-  print_page('setup_directory');
+  print_page('directory');
 }
 
 function connection_setup() {
@@ -73,7 +73,7 @@ function connection_setup() {
   } catch(PDOException $ex) {
     // if the database connection throws an exception, reload the page with an error
     set_error('Unable to connect to the database.');
-    print_page('setup_connection');
+    print_page('connection');
     return;
   }
   // if the database connection succeeded, we write the configuration to file and go to the next page.
@@ -110,7 +110,7 @@ function tables_setup() {
   } catch(PDOException $ex) {
     // if the database connection throws an exception, reload the page with an error
     set_error("There was an error inserting tables: {$ex->getMessage()}");
-    print_page('setup_tables');
+    print_page('tables');
     return;
   }
   
