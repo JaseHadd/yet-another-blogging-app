@@ -1,8 +1,7 @@
 <?php
 namespace YABA;
 
-define('OBJECT_PATH', 'config/%s');
-define('PAGE_PATH', 'pages/%s.html');
+require_once('includes/includes.php');
 
 function load_object($file) {
   $file_path = sprintf(OBJECT_PATH, $file);

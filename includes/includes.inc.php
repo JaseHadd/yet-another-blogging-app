@@ -1,4 +1,5 @@
 <?php
+require('includes/defines.inc.php');
 require('includes/files.inc.php');
 require('includes/pdo.inc.php');
 require('includes/posts.inc.php');

@@ -3,9 +3,6 @@ namespace YABA;
 
 require_once('includes/includes.inc.php');
 
-define('ADMIN_PAGE_PATH', 'admin/%s');
-define('FUNC_PATH', 'YABA\%s');
-
 session_start();
 
 if(!logged_in()){
@@ -20,7 +17,7 @@ $page = array_key_exists('page', $_GET)?$_GET['page']:'newpost';
 if($_SERVER['REQUEST_METHOD'] == "GET") {
   load_page(sprintf(ADMIN_PAGE_PATH, $page));
 } else {
-  call_user_func(sprintf(FUNC_PATH, $page));
+  call_user_func(sprintf(ADMIN_FUNC_PATH, $page));
 }
 
 function newpost() {

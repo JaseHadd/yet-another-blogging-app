@@ -2,8 +2,6 @@
 namespace YABA;
 use \PDO;
 
-define('DB_DATE_FORMAT', 'Y-m-d H:i:s');
-
 require_once('includes/includes.inc.php');
 
 function get_posts($number, $from) {

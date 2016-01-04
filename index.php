@@ -1,8 +1,6 @@
 <?php
 namespace YABA;
 
-define('POSTS_PER_PAGE', 5);
-
 require_once('includes/includes.inc.php');
 
 if(!file_exists('config/')) {
