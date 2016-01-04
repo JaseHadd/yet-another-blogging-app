@@ -122,7 +122,7 @@ form > label {
   font-size: 1.3em;
 }
 
-.post > .body:last-child {
+.post > .body > p:last-child {
   margin-bottom: 0px !IMPORTANT;
 }
 
