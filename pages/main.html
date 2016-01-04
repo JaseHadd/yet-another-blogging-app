@@ -3,6 +3,9 @@
         <div class="post">
           <div class="title"><h1><?=$post->title?></h1></div>
           <div class="body"><?=$vars['parser']->text($post->body)?></div>
+          <div class="byline">
+            Posted in <?=YABA\category_name($post->category_id)?> by <?=YABA\author_name($post->author_id)?>
+          </div>
         </div>
         <?php endforeach; ?>
       </div>

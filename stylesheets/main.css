@@ -17,8 +17,14 @@ body {
   background: white;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .byline {
   font-family: "Lato", sans-serif;
+}
+
+.byline {
+  font-size: 0.8em;
+  text-align: right;
+  color: #555
 }
 
 #page {
