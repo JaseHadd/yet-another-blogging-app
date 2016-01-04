@@ -3,7 +3,7 @@ namespace YABA;
 
 require_once('includes/includes.inc.php');
 
-define('PAGE_PATH', 'pages/admin/%s');
+define('PAGE_PATH', 'admin/%s');
 define('FUNC_PATH', 'YABA\%s');
 
 session_start();
