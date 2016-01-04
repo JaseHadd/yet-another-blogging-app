@@ -1,7 +1,7 @@
 <?php
 namespace YABA;
 
-require_once('includes/includes.php');
+require_once('includes/includes.inc.php');
 
 function load_object($file) {
   $file_path = sprintf(OBJECT_PATH, $file);
