@@ -41,7 +41,8 @@ function get_session_array($login_id) {
 function author_name($id) {
   $config = load_object('db');
   $link = database_connect();
-  $query = "SELECT name FROM {$config->prefix}user_info
+  $query = "SELECT first_name, last_name, display_name
+              FROM {$config->prefix}user_info
               WHERE user_id = :id";
   $statement = $link->prepare($query);
   $statement->bindParam('id', $id, PDO::PARAM_INT);
