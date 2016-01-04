@@ -13,6 +13,7 @@ function get_categories() {
   
   $result = $statement->fetchAll(PDO::FETCH_OBJ);
   return $result;
+}
   
 function category_name($id) {
   $config = load_object('db');
