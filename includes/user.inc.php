@@ -38,4 +38,21 @@ function get_session_array($login_id) {
   return array_merge($session, $result);
 }
 
+function author_name($id) {
+  $config = load_object('db');
+  $link = database_connect();
+  $query = "SELECT name FROM {$config->prefix}user_info
+              WHERE user_id = :id";
+  $statement = $link->prepare($query);
+  $statement->bind_param('id', $id, PDO::PARAM_INT);
+  
+  $result = $statement->fetch(PDO::FETCH_OBJ);
+  
+  if(isset($result->display_name)) {
+    return $result->display_name;
+  }
+  else return "{$result->first_name} {$result->last_name}";
+  
+}
+
 ?>
