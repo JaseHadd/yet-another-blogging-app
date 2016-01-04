@@ -46,6 +46,7 @@ function author_name($id) {
               WHERE user_id = :id";
   $statement = $link->prepare($query);
   $statement->bindParam('id', $id, PDO::PARAM_INT);
+  $statement->execute();
   
   $result = $statement->fetch(PDO::FETCH_OBJ);
   

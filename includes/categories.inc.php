@@ -22,5 +22,7 @@ function category_name($id) {
               WHERE category_id = :id";
   $statement = $link->prepare($query);
   $statement->bindParam('id', $id, PDO::PARAM_INT);
+  $statement->execute();
+  
   return $statement->fetchColumn();
 }
