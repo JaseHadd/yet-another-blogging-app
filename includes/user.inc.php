@@ -44,7 +44,7 @@ function author_name($id) {
   $query = "SELECT name FROM {$config->prefix}user_info
               WHERE user_id = :id";
   $statement = $link->prepare($query);
-  $statement->bind_param('id', $id, PDO::PARAM_INT);
+  $statement->bindParam('id', $id, PDO::PARAM_INT);
   
   $result = $statement->fetch(PDO::FETCH_OBJ);
   
