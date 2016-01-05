@@ -67,10 +67,6 @@ h1, h2, h3, h4, h5, h6, .byline {
   margin: 4px 9px;
 }
 
-#nav a {
-  color: #333;
-}
-
 /* header styles */
 
 #footer p {
@@ -145,4 +141,9 @@ textarea {
   margin: 2px;
   font-family: inherit;
   font-size: inherit;
+}
+
+/* link color */
+a {
+  color: #333;
 }
