@@ -14,10 +14,7 @@ if(!logged_in()){
   header('Location: index.php');
   exit();
 }
-$pages = [
-  'newpost',
-];
-$page = array_key_exists('page', $_GET)?$_GET['page']:'newpost';
+$page = array_key_exists('page', $_GET)?$_GET['page']:'posts';
 
 if($_SERVER['REQUEST_METHOD'] == "GET") {
   load_page(sprintf(ADMIN_PAGE_PATH, $page), ['pages' => $pages]);
