@@ -5,7 +5,8 @@ require_once('includes/includes.inc.php');
 
 $pages = [
   'categories' => 'Categories',
-  'posts' => 'Posts'
+  'posts' => 'Posts',
+  'newpost' => 'New Post'
 ];
 
 session_start();
