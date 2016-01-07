@@ -1,6 +1,9 @@
       <div id="nav">
         <ul>
-          <li><a href="/">Home</a></li>
+          <li><a href="index.php">Home</a></li>
+          <?php foreach($vars['pages'] as $page => $title): ?>
+          <li><a href="?page=<?=$page?>"><?=$title?></a></li>
+          <?php endforeach; ?>
         </ul>
         
         <p>

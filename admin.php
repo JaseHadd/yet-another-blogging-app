@@ -3,6 +3,11 @@ namespace YABA;
 
 require_once('includes/includes.inc.php');
 
+$pages = [
+  'categories' => 'Categories',
+  'posts' => 'Posts'
+];
+
 session_start();
 
 if(!logged_in()){
@@ -15,7 +20,7 @@ $pages = [
 $page = array_key_exists('page', $_GET)?$_GET['page']:'newpost';
 
 if($_SERVER['REQUEST_METHOD'] == "GET") {
-  load_page(sprintf(ADMIN_PAGE_PATH, $page));
+  load_page(sprintf(ADMIN_PAGE_PATH, $page), ['pages' => $pages]);
 } else {
   call_user_func(sprintf(ADMIN_FUNC_PATH, $page));
 }

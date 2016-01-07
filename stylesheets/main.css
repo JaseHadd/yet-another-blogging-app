@@ -68,7 +68,6 @@ h1, h2, h3, h4, h5, h6, .byline {
 }
 
 /* header styles */
-
 #footer p {
   text-align: center;
 }
@@ -97,7 +96,6 @@ form > label {
 }
 
 /* post styling */
-
 .post {
   margin-bottom: 1.5em;
 }

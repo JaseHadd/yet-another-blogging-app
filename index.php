@@ -15,6 +15,7 @@ if(array_key_exists('page', $_GET)) {
   $page = $_GET['page'];
 }
 
-load_page('main', ['page' => $page, 'parser' => new \Parsedown()]);
+$pages = ['home' => 'Home'];
+load_page('main', ['page' => $page, 'parser' => new \Parsedown(), 'pages' => $pages]);
 
 ?>
