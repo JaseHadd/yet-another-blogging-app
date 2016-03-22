@@ -21,7 +21,7 @@ function get_category_tree() {
   while(count($categories) != 0) {
     foreach($categories as $index => $category) {
       $category->children = [];
-      if($category->parent_id = NULL) {
+      if($category->parent_id == NULL) {
         $tree[] = $category;
         unset($categories[$index]);
       }
